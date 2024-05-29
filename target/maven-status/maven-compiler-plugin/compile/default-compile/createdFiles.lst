@@ -1,0 +1,12 @@
+com\mycompany\reataurantcrud\resources\FoodServlet.class
+com\mycompany\reataurantcrud\resources\DeleteClientsServlet.class
+com\mycompany\reataurantcrud\resources\JakartaEE10Resource.class
+com\mycompany\reataurantcrud\resources\signupServlet.class
+com\mycompany\reataurantcrud\resources\CategoryGetServlet.class
+com\mycompany\reataurantcrud\resources\displayImage.class
+com\mycompany\reataurantcrud\resources\Food1.class
+com\mycompany\reataurantcrud\resources\UpdateDelete.class
+com\mycompany\reataurantcrud\resources\loginServlet.class
+com\mycompany\reataurantcrud\JakartaRestConfiguration.class
+com\mycompany\reataurantcrud\resources\DatabaseConnection.class
+com\mycompany\reataurantcrud\resources\CategoryServlet.class

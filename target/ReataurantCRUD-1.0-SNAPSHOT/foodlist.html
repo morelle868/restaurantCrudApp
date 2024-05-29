@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            color: #555;
+        }
+        .delete {
+            background-color: #f44336;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .delete:hover {
+            background-color: #d32f2f;
+        }
+        .update {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .update:hover {
+            background-color: #388e3c;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .action-buttons button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Food List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Category ID</th>
+                <th>Food Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="foodList"></tbody>
+    </table>
+    
+    <script>
+        // Fetch data from server and populate the table
+        fetch('food')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('foodList');
+                data.forEach(food => {
+                    const row = `
+                        <tr>
+                            <td>${food.categoryId}</td>
+                            <td>${food.foodName}</td>
+                            <td>${food.foodPrice}</td>
+                            <td>${food.foodDes}</td>
+                            <td><img src="${food.foodImage}" alt="${food.foodName}"></td>
+                            <td class="action-buttons">  
+                                <a href="dashboard.html"><button class="update" type="button">Update</button></a>
+                                <form action='UpdateDelete' method='post'>
+                                    <input type='hidden' name='id' value="${food.id}">
+                                    <input type='hidden' name='action' value='delete'>
+                                    <button class="delete" type="submit">Delete</button> 
+                                </form>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background-color: #ff6347;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .content {
+            display: flex;
+            height: calc(100vh - 50px);
+        }
+        .sidebar {
+            background-color: #ff6347;
+            color: #fff;
+            width: 200px;
+            padding: 20px;
+            height:120vh;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #218838;
+        }
+        .form-links {
+            margin-top: 20px;
+        }
+        .form-links a {
+            color: #007BFF;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <nav class="navbar">
+            <h1>Restaurant Dashboard</h1>
+            <button id="logout-button">Logout</button>
+        </nav>
+        <div class="content">
+            <div class="sidebar">
+                <ul>
+                    <li><a href="#" onclick="showForm('create-food')">Create Food</a></li>
+                    <li><a href="#" onclick="showForm('update-food')">Update Food</a></li>
+                    <li><a href="#" onclick="showForm('delete-food')">Delete Food</a></li>
+                          <li><a href="foodlist.html" onclick="showForm('delete-food')">View Food</a></li>
+                    <li><a href="#" onclick="showForm('manage-categories')">Manage Categories</a></li>
+                    <li><a href="#" onclick="showForm('manage-orders')">Manage Orders</a></li>
+                    <li><a href="catergory.html">Create Category</a></li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <div class="form-container" id="create-food">
+                    <h2>Create Food</h2>
+                    <form method="post" action="Food1" enctype="multipart/form-data">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="foodName" required>
+                        <label for="price">Price:</label>
+                        <input type="number" id="price" name="foodPrice" required>
+                        <label for="description">Description:</label>
+                        <input type="text" id="description" name="foodDes" required>
+                        <label for="image">Image URL:</label>
+                        <input type="file"  id="image" name="foodImage" required>
+                        <label for="categoryId">Category ID:</label>
+                        <input type="number" id="categoryId" name="categoryId" required>
+                        <button type="submit">Create Food</button>
+                    </form>
+                    <div class="form-links">
+                        <a href="#" onclick="showForm('update-food')">Update Food</a>
+                        <a href="#" onclick="showForm('delete-food')">Delete Food</a>
+                                          <a href="foodlist.html" onclick="showForm('update-food')">View Food</a>
+                    </div>
+                </div>
+                <div class="form-container" id="update-food" style="display:none;">
+                    <h2>Update Food</h2>
+                    <form method="post" action='UpdateDelete' enctype="multipart/form-data">
+                        <label for="updateId">Food ID:</label>
+                        <input type="number" id="updateId" name="updateId" required>
+                        <label for="updateName">Name:</label>
+                        <input type="text" id="updateName" name="updateName">
+                        <label for="updatePrice">Price:</label>
+                        <input type="number" id="updatePrice" name="updatePrice">
+                        <label for="updateDescription">Description:</label>
+                        <input type="text" id="updateDescription" name="updateDescription">
+                        <label for="updateImage">Image URL:</label>
+                        <input type="file" id="updateImage" name="updateImage">
+                        <label for="updateCategoryId">Category ID:</label>
+                        <input type="number" id="updateCategoryId" name="updateCategoryId">
+                        <input type='hidden' name='action' value='update'>
+                        <button type="submit">Update Food</button>
+                    </form>
+                    <div class="form-links">
+                        <a href="#" onclick="showForm('create-food')">Create Food</a>
+                        <a href="#" onclick="showForm('delete-food')">Delete Food</a>
+                                          <a href="foodlist.html" onclick="showForm('update-food')">View Food</a>
+                    </div>
+                </div>
+                <div class="form-container" id="delete-food" style="display:none;">
+                    <h2>Delete Food</h2>
+                    <form method="post" action="/deleteFood">
+                        <label for="deleteId">Food ID:</label>
+                        <input type="number" id="deleteId" name="deleteId" required>
+                        <button type="submit">Delete Food</button>
+                    </form>
+                    <div class="form-links">
+                        <a href="#" onclick="showForm('create-food')">Create Food</a>
+                        <a href="#" onclick="showForm('update-food')">Update Food</a>
+                           <a href="foodlist.html" onclick="showForm('update-food')">View Food</a>
+                    </div>
+                </div>
+                <div class="form-container" id="manage-categories" style="display:none;">
+                    <h2>Manage Categories</h2>
+                    <form method="post" action="/addCategory">
+                        <label for="category-name">Category Name:</label>
+                        <input type="text" id="category-name" name="categoryName" required>
+                        <button type="submit">Add Category</button>
+                    </form>
+                </div>
+                <div class="form-container" id="manage-orders" style="display:none;">
+                    <h2>Manage Orders</h2>
+                    <form method="post" action="/updateOrder">
+                        <label for="order-id">Order ID:</label>
+                        <input type="number" id="order-id" name="orderId" required>
+                        <label for="order-status">Status:</label>
+                        <input type="text" id="order-status" name="orderStatus" required>
+                        <button type="submit">Update Order</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showForm(formId) {
+            const forms = document.querySelectorAll('.form-container');
+            forms.forEach(form => {
+                form.style.display = 'none';
+            });
+            document.getElementById(formId).style.display = 'block';
+        }
+
+        const logoutButton = document.getElementById('logout-button');
+        logoutButton.addEventListener('click', function () {
+            window.location.href = 'login.html';
+        });
+
+        // Show the default form (Create Food) on page load
+        showForm('create-food');
+    </script>
+</body>
+</html>

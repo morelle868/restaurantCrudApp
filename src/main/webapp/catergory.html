@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Food Category</title>
+    <link rel="stylesheet" href="cat.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Create Food Category</h2>
+        <form action="category" method="post">
+            <div class="form-group">
+                <label for="cat_name">Category Name:</label>
+                <input type="text" id="cat_name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="cat_des">Category Description:</label>
+                <textarea id="cat_des" name="cat_des" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cat_range">Category Range of Amount:</label>
+                <input type="number" id="cat_range" name="price_racge" required>
+            </div>
+            <button type="submit">Create Category</button>
+        </form>
+    </div>
+</body>
+</html>

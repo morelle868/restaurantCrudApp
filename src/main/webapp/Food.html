@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Food Items</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Food</h1>
+        <form  method="post" action="food" >
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="foodName" required>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="foodPrice" required>
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="foodDes" required>
+
+            <label for="image">Image URL:</label>
+            <input type="text" id="image" name="foodImage" required>
+
+            <label for="categoryIdParam">Category ID:</label>
+            <input type="number" id="categoryIdParam" name="categoryId" required>
+
+            <button type="submit">Create Food</button>
+        </form>
+
+        <h1>Update Food</h1>
+        <form id="updateFoodForm" method="post" action="/updateFood" >
+            <label for="updateId">Food ID:</label>
+            <input type="number" id="updateId" name="updateId" required>
+
+            <label for="updateName">Name:</label>
+            <input type="text" id="updateName" name="updateName">
+
+            <label for="updatePrice">Price:</label>
+            <input type="number" id="updatePrice" name="updatePrice">
+
+            <label for="updateDescription">Description:</label>
+            <input type="text" id="updateDescription" name="updateDescription">
+
+            <label for="updateImage">Image URL:</label>
+            <input type="text" id="updateImage" name="updateImage">
+
+            <label for="updateCategoryIdParam">Category ID:</label>
+            <input type="number" id="updateCategoryIdParam" name="updateCategoryIdParam">
+
+            <button type="submit">Update Food</button>
+        </form>
+
+        <h1>Delete Food</h1>
+        <form id="deleteFoodForm" method="post" action="/deleteFood">
+            <label for="deleteId">Food ID:</label>
+            <input type="number" id="deleteId" name="deleteId" required>
+
+            <button type="submit">Delete Food</button>
+        </form>
+
+        <h1>Get Food by Category</h1>
+        <form id="getFoodByCategoryForm" method="get" action="/getFoodByCategory">
+            <label for="categoryId">Category ID:</label>
+            <input type="number" id="categoryId" name="categoryId" required>
+
+            <button type="submit">Get Food</button>
+        </form>
+    </div>
+</body>
+</html>

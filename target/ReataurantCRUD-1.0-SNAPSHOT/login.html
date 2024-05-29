@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+   
+   <div class="container">
+    <div class="left">
+        <img src="./hero.jpeg" alt="Restaurant Image">
+    </div>
+    <div class="right">
+        <div class="section">
+            <h2>SIGN IN</h2>
+            <form action="login" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <input type="submit" value="SignIn">
+            </form>
+            <p><a href='signup.html'>Sign up</a></p>
+        </div>
+    </div>
+ 
+
+    <script>
+        // JavaScript to prefill the food item based on the URL parameter
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const foodItem = urlParams.get('food');
+            document.getElementById('food-item').value = foodItem;
+        }
+    </script>
+</body>
+</html>
